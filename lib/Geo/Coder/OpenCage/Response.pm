@@ -18,14 +18,6 @@ my class Result {
         has LatLng $.northeast;
     }
 
-    my class Components {
-        has Str $.country_code;
-        has Str $.state;
-        has Str $.hamlet;
-        has Str $.country;
-        has Str $.county;
-    }
-
     my class Annotations {
         my class Sun {
             my class Times {
@@ -81,7 +73,7 @@ my class Result {
     has Int         $.confidence;
     has LatLng      $.geometry;
     has Bounds      $.bounds;
-    has Components  $.components;
+    has             %.components;
     has Annotations $.annotations
 }
 
