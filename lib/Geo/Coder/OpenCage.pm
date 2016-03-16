@@ -10,7 +10,7 @@ has $.api-key
     = die "api-key is a required attribute in Geo::Coder::OpenCage";
 
 method make-request(Str $place-name, %params) returns Str {
-    my $url = $.endpoint   ~ "?q=" ~ uri-escape($place-name);
+    my $url = $.endpoint   ~ "?q=" ~ $place-name;
     $url   ~= "&key="      ~ $.api-key;
     for %params.keys -> $k {
         $url ~= "&$k=" ~ uri-escape(%params{$k})
@@ -21,6 +21,12 @@ method make-request(Str $place-name, %params) returns Str {
 
 method geocode(Str $place-name, *%params)
        returns Geo::Coder::OpenCage::Response {
-    my $json = self.make-request($place-name, %params);
+    my $json = self.make-request(uri-escape($place-name), %params);
+    return unmarshal $json, Geo::Coder::OpenCage::Response;
+}
+
+method reverse-geocode(Numeric $lat, Numeric $lng, *%params)
+       returns Geo::Coder::OpenCage::Response {
+    my $json = self.make-request("$lat+$lng", %params);
     return unmarshal $json, Geo::Coder::OpenCage::Response;
 }
