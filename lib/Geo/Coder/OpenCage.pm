@@ -6,8 +6,7 @@ use URI::Escape;
 
 has $.endpoint = "http://api.opencagedata.com/geocode/v1/json";
 has $.ua       = HTTP::UserAgent.new;
-has $.api-key
-    = die "api-key is a required attribute in Geo::Coder::OpenCage";
+has $.api-key is required;
 
 method make-request(Str $place-name, %params) returns Str {
     my $url = $.endpoint   ~ "?q=" ~ $place-name;
