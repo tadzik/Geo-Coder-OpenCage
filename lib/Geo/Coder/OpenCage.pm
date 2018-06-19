@@ -8,7 +8,7 @@ Geo::Coder::OpenCage - Geocode addresses with the OpenCage Geocoder API
 
 This module provides an interface to the OpenCage geocoding service.
 
-For full details on the API visit L<http://geocoder.opencagedata.com/api.html>.
+For full details on the API visit L<https://opencagedata.com>.
 
 =head1 SYNOPSIS
 
@@ -28,7 +28,7 @@ use HTTP::UserAgent;
 use JSON::Unmarshal;
 use URI::Escape;
 
-has $.endpoint = "http://api.opencagedata.com/geocode/v1/json";
+has $.endpoint = "https://api.opencagedata.com/geocode/v1/json";
 has $.ua       = HTTP::UserAgent.new;
 has $.api-key is required;
 
